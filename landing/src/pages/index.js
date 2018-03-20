@@ -46,6 +46,7 @@ class BlogIndex extends React.Component {
             },
           ]}
         />
+
         {pageLinks}
       </div>
     )

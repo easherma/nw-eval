@@ -29,7 +29,18 @@ class SiteNavi extends React.Component {
                 }
               >
                 <Link to="/profile/" className="nav-link">
-                  Profile
+                  About
+                </Link>
+              </li>
+              <li
+                className={
+                  location.pathname === '/profile/'
+                    ? 'nav-item active'
+                    : 'nav-item'
+                }
+              >
+                <Link to="/profile/" className="nav-link">
+                  Team
                 </Link>
               </li>
             </ul>
