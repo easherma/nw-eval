@@ -1,35 +1,33 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
+import Link from 'gatsby-link'
+import { siteMetadata } from '../../gatsby-config'
+import SiteNavi from '../components/SiteNavi'
+import emergence from 'emergence.js'
 
-import Header from '../components/Header'
-import './index.css'
+import './gatstrap.scss'
+import 'animate.css/animate.css'
+import 'prismjs/themes/prism-okaidia.css'
+import 'devicon-2.2/devicon.min.css'
+import 'font-awesome/css/font-awesome.css'
 
-const TemplateWrapper = ({ children }) => (
-  <div>
-    <Helmet
-      title="Gatsby Default Starter"
-      meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
-      ]}
-    />
-    <Header />
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '0px 1.0875rem 1.45rem',
-        paddingTop: 0,
-      }}
-    >
-      {children()}
-    </div>
-  </div>
-)
+class Template extends React.Component {
+  componentDidMount() {
+    emergence.init()
+  }
 
-TemplateWrapper.propTypes = {
-  children: PropTypes.func,
+  componentDidUpdate() {
+    emergence.init()
+  }
+
+  render() {
+    const { location, children } = this.props
+    return (
+      <div>
+        <SiteNavi title={siteMetadata.title} {...this.props} />
+        {children()}
+      </div>
+    )
+  }
 }
 
-export default TemplateWrapper
+export default Template
